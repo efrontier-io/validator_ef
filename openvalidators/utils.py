@@ -20,10 +20,13 @@ import torch
 import wandb
 import copy
 import bittensor as bt
-import openvalidators
-from openvalidators.misc import ttl_get_block
-from openvalidators.reward import MockRewardModel
 
+from misc import ttl_get_block
+from reward import MockRewardModel
+from neuron import neuron
+__version__ = "1.2.0"
+version_split = __version__.split(".")
+__spec_version__ = (1000 * int(version_split[0])) + (10 * int(version_split[1])) + (1 * int(version_split[2]))
 
 def should_reinit_wandb(self):
     # Check if wandb run needs to be rolled over.
@@ -33,8 +36,8 @@ def should_reinit_wandb(self):
 def init_wandb(self, reinit=False):
     """Starts a new wandb run."""
     tags = [self.wallet.hotkey.ss58_address,
-            openvalidators.__version__,
-            str(openvalidators.__spec_version__),
+            __version__,
+            str(__spec_version__),
             f'netuid_{self.metagraph.netuid}']
 
     if self.config.mock:
@@ -90,7 +93,7 @@ def checkpoint(self):
     save_state(self)
 
 
-def resync_metagraph(self: 'openvalidators.neuron.neuron'):
+def resync_metagraph(self: 'neuron'):
     """Resyncs the metagraph and updates the hotkeys and moving averages based on the new metagraph."""
     bt.logging.info("resync_metagraph()")
 

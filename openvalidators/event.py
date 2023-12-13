@@ -19,7 +19,7 @@ import bittensor as bt
 from dataclasses import dataclass
 from typing import List, Optional
 
-from openvalidators.reward import RewardModelType
+from reward import RewardModelType
 
 
 @dataclass

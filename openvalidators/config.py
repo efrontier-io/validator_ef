@@ -20,8 +20,8 @@ import torch
 import argparse
 import bittensor as bt
 from loguru import logger
-from openvalidators.gating import BaseGatingModel
-from openvalidators.reward import DefaultRewardFrameworkConfig
+from gating import BaseGatingModel
+from reward import DefaultRewardFrameworkConfig
 
 
 def check_config(cls, config: "bt.Config"):

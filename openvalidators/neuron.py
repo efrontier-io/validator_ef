@@ -18,21 +18,20 @@
 import copy
 import torch
 import asyncio
-import bittensor as bt
 
-from openvalidators.dataset import Dataset, MockDataset
-from openvalidators.dendrite import AsyncDendritePool
-from openvalidators.gating import GatingModel, SentenceEmbedGatingModel
-from openvalidators.mock import MockDendritePool, MockRewardModel, MockGatingModel
 
+from dataset import Dataset, MockDataset
+from dendrite import AsyncDendritePool
+from gating import GatingModel, SentenceEmbedGatingModel
+from mock import MockDendritePool, MockRewardModel, MockGatingModel
 # Load local forward function.
-from openvalidators.config import add_args, check_config, config
-from openvalidators.run import run
-from openvalidators.misc import ttl_get_block
-from openvalidators.utils import init_wandb
+from config import add_args, check_config, config
+from run import run
+from misc import ttl_get_block
+from utils import init_wandb
 
 # Load gating models
-from openvalidators.reward import (
+from reward import (
     Blacklist,
     TaskValidator,
     NSFWRewardModel,
@@ -47,6 +46,7 @@ from openvalidators.reward import (
     RewardModelType,
 )
 
+import bittensor as bt
 
 class neuron:
     @classmethod
